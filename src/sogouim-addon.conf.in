@@ -1,0 +1,8 @@
+[Addon]
+Name=Sogou
+Category=InputMethod
+Version=@PROJECT_VERSION@
+Library=libfcitx5-sogouim
+Type=SharedLibrary
+OnDemand=True
+Configurable=True

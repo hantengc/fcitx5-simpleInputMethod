@@ -1,0 +1,11 @@
+[InputMethod]
+Name[ca]=Sogou
+Name[da]=Sogou
+Name[de]=Sogou
+Name[zh_CN]=搜狗
+Name=Sogou
+Icon=Sogou
+Label=搜
+LangCode=zh_CN
+Addon=sogouim
+Configurable=True
