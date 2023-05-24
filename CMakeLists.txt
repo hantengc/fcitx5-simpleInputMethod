@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(fcitx5-sogouim)
+project(sogouim)
 
 
 find_package(Fcitx5Core REQUIRED)
