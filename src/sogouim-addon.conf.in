@@ -1,8 +1,12 @@
 [Addon]
+Name[ca]=Sogou
+Name[da]=Sogou
+Name[de]=Sogou
+Name[zh_CN]=搜狗
 Name=Sogou
 Category=InputMethod
-Version=@PROJECT_VERSION@
-Library=libfcitx5-sogouim
+Version=5.0.11
+Library=libsogouim
 Type=SharedLibrary
 OnDemand=True
 Configurable=True
