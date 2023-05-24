@@ -1,5 +1,9 @@
 add_library("${PROJECT_NAME}" SHARED sogouim.cpp)
-target_link_libraries("${PROJECT_NAME}" Fcitx5::Core)
+target_link_libraries(${PROJECT_NAME} 
+                        Fcitx5::Core
+                        ${PKG_X11_LDFLAGS}
+                        ${PKG_XTST_LDFLAGS}
+                        )
 
 install(TARGETS "${PROJECT_NAME}" DESTINATION "${FCITX_INSTALL_LIBDIR}/fcitx5")
 
