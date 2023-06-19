@@ -1,19 +1,13 @@
 add_library("${PROJECT_NAME}" SHARED sogouim.cpp)
 
-include_directories("${PROJECT_SOURCE_DIR}/../../ks/include")
-include_directories("${PROJECT_SOURCE_DIR}/../../../src/engine/include")
-include_directories("${PROJECT_SOURCE_DIR}/../../../src/panel/include")
-include_directories("${PROJECT_SOURCE_DIR}/../../../src/keyflow/include")
-include_directories("${PROJECT_SOURCE_DIR}/../../../include")
-include_directories("${PROJECT_SOURCE_DIR}/../../../include/third_part")
-
-configure_file(config.h.in ${PROJECT_SOURCE_DIR}/config.h @ONLY)
+find_package(Fcitx5Core REQUIRED)
+find_package(Fcitx5Module REQUIRED COMPONENTS DBus)
 
 target_link_libraries(${PROJECT_NAME} 
                         Fcitx5::Core
                         ${PKG_X11_LDFLAGS}
                         ${PKG_XTST_LDFLAGS}
-                        cpis-panel
+                        Fcitx5::Module::DBus
                         )
 
 install(TARGETS "${PROJECT_NAME}" DESTINATION "${FCITX_INSTALL_LIBDIR}/fcitx5")

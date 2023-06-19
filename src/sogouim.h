@@ -1,9 +1,12 @@
 #ifndef _SOGOUIM_H_
 #define _SOGOUIM_H_
 
-#include <iostream>
-
+#include <dbus_public.h>
+#include <fcitx-utils/dbus/bus.h>
+#include <fcitx-utils/dbus/servicewatcher.h>
+#include <fcitx-utils/event.h>
 #include <fcitx/addonfactory.h>
+#include <fcitx/addoninstance.h>
 #include <fcitx/addonmanager.h>
 #include <fcitx/inputmethodengine.h>
 #include <fcitx/instance.h>
@@ -27,7 +30,16 @@ public:
     void save() override;
 
 private:
+    void connectSignal();
+    void watch();
+
+private:
+    FCITX_ADDON_DEPENDENCY_LOADER(dbus, instance_->addonManager());
+
+private:
     Instance *instance_;
+    dbus::Bus *bus_ = nullptr;
+    dbus::ServiceWatcher watcher_;
 };
 
 class SogouIMEngineFactory : public AddonFactory {

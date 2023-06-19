@@ -4,9 +4,11 @@ Name[da]=Sogou
 Name[de]=Sogou
 Name[zh_CN]=搜狗
 Name=Sogou
-Category=InputMethod
 Version=5.0.11
 Library=libsogouim
 Type=SharedLibrary
 OnDemand=True
 Configurable=True
+
+[Addon/Dependencies]
+0=dbus
