@@ -40,31 +40,24 @@ void SogouIMEngine::doReset(InputContext *inputContext) {
 void SogouIMEngine::save() { FCITX_INFO() << "SogouIMEngine::save"; }
 
 void SogouIMEngine::connectSignal() {
-    FCITX_INFO() << "\r\n";
-    FCITX_INFO() << "connectSignal = " << __FUNCTION__;
-    FCITX_INFO() << "\r\n";
+    slot_ =
+        bus_->addMatch(dbus::MatchRule("com.kylin.statusmanager.interface", "/",
+                                       "com.kylin.statusmanager.interface"),
+                       [this](dbus::Message &message) {
+                           FCITX_INFO() << "Commit";
 
-    bus_->addMatch(dbus::MatchRule("com.kylin.statusmanager.interface", "/",
-                                   "com.kylin.statusmanager.interface"),
-                   [this](dbus::Message &message) {
-                       FCITX_INFO() << "Commit";
-
-                       return true;
-                   });
+                           return true;
+                       });
 }
 
 void SogouIMEngine::watch() {
-    FCITX_INFO() << "\r\n";
-    FCITX_INFO() << "func = " << __FUNCTION__;
-    FCITX_INFO() << "\r\n";
-    watcher_.watchService("com.kylin.statusmanager.interface",
-                          [this](const std::string &, const std::string &,
-                                 const std::string &newOwner) {
-                              FCITX_INFO()
-                                  << "watchService"
-                                  << "com.kylin.statusmanager.interface  : "
-                                  << newOwner;
-                          });
+    entry_ = watcher_.watchService(
+        "com.kylin.statusmanager.interface",
+        [this](const std::string &, const std::string &,
+               const std::string &newOwner) {
+            FCITX_INFO() << "watchService"
+                         << "com.kylin.statusmanager.interface  : " << newOwner;
+        });
 }
 } // namespace fcitx
 

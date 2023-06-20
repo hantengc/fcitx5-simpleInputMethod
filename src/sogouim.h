@@ -40,6 +40,8 @@ private:
     Instance *instance_;
     dbus::Bus *bus_ = nullptr;
     dbus::ServiceWatcher watcher_;
+    std::unique_ptr<dbus::ServiceWatcherEntry> entry_;
+    std::unique_ptr<dbus::Slot> slot_;
 };
 
 class SogouIMEngineFactory : public AddonFactory {
