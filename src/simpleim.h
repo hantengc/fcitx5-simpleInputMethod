@@ -1,5 +1,5 @@
-#ifndef _SOGOUIM_H_
-#define _SOGOUIM_H_
+#ifndef _SIMPLEIM_H_
+#define _SIMPLEIM_H_
 
 #include <dbus_public.h>
 #include <fcitx-utils/dbus/bus.h>
@@ -13,10 +13,10 @@
 
 namespace fcitx {
 
-class SogouIMEngine final : public InputMethodEngineV3 {
+class SimpleIMEngine final : public InputMethodEngineV3 {
 public:
-    SogouIMEngine(Instance *instance);
-    ~SogouIMEngine();
+    SimpleIMEngine(Instance *instance);
+    ~SimpleIMEngine() override;
     Instance *instance() { return instance_; }
     void activate(const InputMethodEntry &entry,
                   InputContextEvent &event) override;
@@ -42,13 +42,14 @@ private:
     dbus::ServiceWatcher watcher_;
     std::unique_ptr<dbus::ServiceWatcherEntry> entry_;
     std::unique_ptr<dbus::Slot> slot_;
+    std::unique_ptr<EventSourceTime> timeout_;
 };
 
-class SogouIMEngineFactory : public AddonFactory {
+class SimpleIMEngineFactory : public AddonFactory {
 public:
     AddonInstance *create(AddonManager *manager) override {
-        FCITX_INFO() << "SogouIMEngineFactory ...";
-        return new SogouIMEngine(manager->instance());
+        FCITX_INFO() << "SimpleIMEngineFactory ...";
+        return new SimpleIMEngine(manager->instance());
     }
 };
 

@@ -1,0 +1,14 @@
+[Addon]
+Name[ca]=SimpleIm
+Name[da]=SimpleIm
+Name[de]=SimpleIm
+Name[zh_CN]=简单输入法
+Name=SimpleIm
+Version=5.0.11
+Library=libsimpleim
+Type=SharedLibrary
+OnDemand=True
+Configurable=True
+
+[Addon/Dependencies]
+0=dbus

@@ -1,0 +1,11 @@
+[InputMethod]
+Name[ca]=SimpleIm
+Name[da]=SimpleIm
+Name[de]=SimpleIm
+Name[zh_CN]=简单输入法
+Name=SimpleIm
+Icon=SimpleIm
+Label=腾
+LangCode=zh_CN
+Addon=simpleim
+Configurable=True

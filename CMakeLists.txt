@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(sogouim)
+project(simpleim)
 
 find_package(PkgConfig)
 find_package(Gettext)

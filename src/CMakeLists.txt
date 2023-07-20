@@ -1,4 +1,4 @@
-add_library("${PROJECT_NAME}" SHARED sogouim.cpp)
+add_library("${PROJECT_NAME}" SHARED simpleim.cpp)
 
 find_package(Fcitx5Core REQUIRED)
 find_package(Fcitx5Module REQUIRED COMPONENTS DBus)
@@ -12,10 +12,10 @@ target_link_libraries(${PROJECT_NAME}
 
 install(TARGETS "${PROJECT_NAME}" DESTINATION "${FCITX_INSTALL_LIBDIR}/fcitx5")
 
-configure_file(sogouim-addon.conf.in sogouim-addon.conf)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sogouim-addon.conf" RENAME sogouim.conf DESTINATION "${FCITX_INSTALL_PKGDATADIR}/addon")
+configure_file(simpleim-addon.conf.in simpleim-addon.conf)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/simpleim-addon.conf" RENAME simpleim.conf DESTINATION "${FCITX_INSTALL_PKGDATADIR}/addon")
 
-configure_file(sogouim.conf.in sogouim.conf)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sogouim.conf"  DESTINATION "${FCITX_INSTALL_PKGDATADIR}/inputmethod")
+configure_file(simpleim.conf.in simpleim.conf)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/simpleim.conf"  DESTINATION "${FCITX_INSTALL_PKGDATADIR}/inputmethod")
 
 
